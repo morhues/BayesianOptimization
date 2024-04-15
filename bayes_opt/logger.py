@@ -292,6 +292,9 @@ class JSONLogger(_Tracker):
             if "allowed" in data: # fix: github.com/fmfn/BayesianOptimization/issues/361
                 data["allowed"] = bool(data["allowed"])
 
+            if "constraint" in data:
+                data["constraint"] = list(data["constraint"])
+
             with open(self._path, "a") as f:
                 f.write(json.dumps(data) + "\n")
 
